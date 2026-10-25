@@ -74,6 +74,7 @@ def health() -> dict[str, str]:
     return {
         "status": "ok",
         "service": "telecom-churn-api",
+        "version" : "v2",
     }
 
 
