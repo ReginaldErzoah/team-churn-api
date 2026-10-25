@@ -25,14 +25,19 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 
-pipeline = Pipeline([
-    ("imputer", SimpleImputer(strategy="median")),
-    ("scaler", StandardScaler()),
-    ("model", LogisticRegression(
-        max_iter=1000,
-        class_weight="balanced",
-    )),
-])
+pipeline = Pipeline(
+    [
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler()),
+        (
+            "model",
+            LogisticRegression(
+                max_iter=1000,
+                class_weight="balanced",
+            ),
+        ),
+    ]
+)
 
 pipeline.fit(X_train, y_train)
 print("Training complete")
@@ -46,14 +51,14 @@ probabilities = pipeline.predict_proba(X_test)[:, 1]
 print(classification_report(y_test, predictions))
 print("ROC-AUC:", roc_auc_score(y_test, probabilities))
 
-# Sanity check: 
+# Sanity check:
 sample = X_test.head(5)
 print(sample.to_string())
 print("Predictions:", pipeline.predict(sample))
 print("Churn probabilities:", pipeline.predict_proba(sample)[:, 1].round(3))
 print("Actual labels:", y_test.head(5).tolist())
 
-# Checking which features matter most? 
+# Checking which features matter most?
 coefs = pipeline.named_steps["model"].coef_[0]
 for name, coef in sorted(zip(X.columns, coefs), key=lambda p: abs(p[1]), reverse=True):
     print(f"{name:30s} {coef:+.3f}")
