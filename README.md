@@ -143,8 +143,8 @@ Pre-built Docker images are available on GitHub Container Registry (GHCR).
 
 **Published images:**
 
-- [`v1`](https://github.com/ReginaldErzoah/team-churn-api/pkgs/container/team-churn-api/versions) — `ghcr.io/reginalderzoah/team-churn-api:v1`
-- [`v2`](https://github.com/ReginaldErzoah/team-churn-api/pkgs/container/team-churn-api/versions) — `ghcr.io/reginalderzoah/team-churn-api:v2`
+- [`v1`](https://github.com/ReginaldErzoah/team-churn-api/pkgs/container/team-churn-api/versions) - `ghcr.io/reginalderzoah/team-churn-api:v1`
+- [`v2`](https://github.com/ReginaldErzoah/team-churn-api/pkgs/container/team-churn-api/versions) - `ghcr.io/reginalderzoah/team-churn-api:v2`
 
 ### Run a published image
 
