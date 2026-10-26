@@ -139,27 +139,47 @@ Interactive API documentation is available at
 
 ## Docker
 
-Build the image from the repository root:
+Pre-built Docker images are available on GitHub Container Registry (GHCR).
+
+**Published images:**
+
+- [`v1`](https://github.com/ReginaldErzoah/team-churn-api/pkgs/container/team-churn-api/versions) — `ghcr.io/reginalderzoah/team-churn-api:v1`
+- [`v2`](https://github.com/ReginaldErzoah/team-churn-api/pkgs/container/team-churn-api/versions) — `ghcr.io/reginalderzoah/team-churn-api:v2`
+
+### Run a published image
+
+Pull the latest published version (`v2`):
+
+```bash
+docker pull ghcr.io/reginalderzoah/team-churn-api:v2
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 8080:8080 ghcr.io/reginalderzoah/team-churn-api:v2
+```
+
+The API will be available at:
+
+- API: http://localhost:8080
+- Interactive API documentation: http://localhost:8080/docs
+- Health check: http://localhost:8080/health
+
+To use version `v1`, replace `v2` with `v1` in the commands above.
+
+### Build the image locally
+
+Alternatively, build the image from the repository root:
 
 ```bash
 docker build -t team-churn:v1 .
 ```
 
-Run the container and publish port `8080`:
+Run the locally built image:
 
 ```bash
 docker run --rm -p 8080:8080 team-churn:v1
 ```
 
-The container entrypoint starts Uvicorn on port `8080`. It also honors the
-`PORT` environment variable if a different listening port is needed.
-
-## Testing and Quality Checks
-
-Run the linter, formatting check, and test suite from the repository root:
-
-```bash
-uv run ruff check .
-uv run ruff format --check .
-uv run pytest
-```
+The container entrypoint starts Uvicorn on port `8080` by default and honors the `PORT` environment variable if a different listening port is needed.
