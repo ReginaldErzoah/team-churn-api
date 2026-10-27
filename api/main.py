@@ -5,6 +5,8 @@ import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
+import traceback
+
 
 APP_DIR = Path(__file__).resolve().parents[1]
 
@@ -123,8 +125,6 @@ def predict(
     #     ) from exc
     except Exception as exc:
         print(f"CRITICAL ERROR: {exc}")
-        import traceback
-
         traceback.print_exc()  # <-- This will print the full stack trace in your terminal
         raise HTTPException(
             status_code=500,
