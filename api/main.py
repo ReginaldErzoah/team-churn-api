@@ -1,12 +1,11 @@
 import json
+import traceback
 from pathlib import Path
 
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-import traceback
-
 
 APP_DIR = Path(__file__).resolve().parents[1]
 
